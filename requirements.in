@@ -1,0 +1,11 @@
+# app requirements
+Flask==0.11.1
+Flask-SQLAlchemy==2.1
+Flask-Bcrypt==0.7.1
+Flask-WTF==0.11
+
+# developer requirements
+pip-tools==1.6.5
+
+# testing requirements
+nose==1.3.7

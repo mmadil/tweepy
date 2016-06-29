@@ -1,0 +1,52 @@
+{% extends '_base.html' %}
+
+{% block content %}
+<form action="/register/" method="post">
+    {{ form.csrf_token }}
+    <p>
+        {{ form.name(placeholder="name") }}
+        {% if form.name.errors %}
+        <span class="error">
+        {% for error in form.name.errors %}
+            {{ error }}
+        {% endfor %}
+        </span>
+        {% endif %}
+    </p>
+    <p>
+        {{ form.email(placeholder="email address") }}
+        {% if form.email.errors %}
+        <span class="error">
+            {% for error in form.email.errors %}
+                {{ error }}
+            {% endfor %}
+        </span>
+        {% endif %}
+    </p>
+    <p>
+        {{ form.password(placeholder="password") }}
+        {% if form.password.errors %}
+        <span class="error">
+            {% for error in form.password.errors %}
+                {{ error }}
+            {% endfor %}
+        </span>
+        {% endif %}
+    </p>
+    <p>
+        {{ form.confirm(placeholder="confirm password") }}
+        {% if form.confirm.errors %}
+        <span class="error">
+            {% for error in form.confirm.errors %}
+                {{ error }}
+            {% endfor %}
+        </span>
+        {% endif %}
+    </p>
+<button class="btn btn-sm btn-success" type="submit">Register</button>
+</form>
+<br>
+<p>
+    <em>Already registered?</em>Click <a href="/">here</a> to login.
+</p>
+{% endblock %}
