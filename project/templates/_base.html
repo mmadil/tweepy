@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>tweepy - twitter clone</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css' )}}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/main.css' )}}" rel="stylesheet">
+    <link rel="icon" href="{{ url_for('static', filename='img/favicon.ico' )}}">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="{{ url_for('static', filename='css/ie10-viewport-bug-workaround.css' )}}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{{ url_for('static', filename='css/jumbotron-narrow.css' )}}" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="container">
+      <div class="header clearfix">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+          {% if session.logged_in %}
+          <li><a href="/">Home</a></li>
+          <li><a href="/tweets/">Tweets</a></li>
+          <li><a>{{ session.name }}</a></li>
+          {% endif %}
+          {% if not session.logged_in %}
+          {% block signin_form %}{% endblock signin_form %}
+          {% else %}
+          <li role="presentation"><a href="{{ url_for('users.logout') }}">Signout</a></li>
+          {% endif %}
+          </ul>
+        </nav>
+        <h3 class="text-muted"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span>  tweepy!</h3>
+      </div>
+      {% for message in get_flashed_messages() %}
+      <div class="alert alert-success">{{ message }}</div>
+      {% endfor %}
+      {% if error %}
+      <div class="error">
+          <strong>Error:</strong>{{ error }}
+      </div>
+      {% endif %}
+      {% block content %}
+      {% endblock content %}
+      <footer class="footer">
+        <p>Made with <span class="glyphicon glyphicon-heart" style="color:#c7254e" aria-hidden="true"></span></p>
+      </footer>
+
+    </div> <!-- /container -->
+
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="{{ url_for('static', filename='js/ie10-viewport-bug-workaround.js' )}}"></script>
+  </body>
+</html>
