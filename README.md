@@ -3,6 +3,7 @@
 tweepy is a simple twitter clone made on [flask - a python micro framework](flask.pocoo.org).
 
 ### Stack
+
 - Python
 - Flask
 - postgres
