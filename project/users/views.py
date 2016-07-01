@@ -77,3 +77,9 @@ def register():
                 error = 'That username and/or email already exists.'
                 return render_template('register.html', form=form, error=error)
     return render_template('register.html', form=form, error=error)
+
+@users_blueprint.route('/users/')
+@login_required
+def all_users():
+    users = db.session.query(User).all()
+    return render_template('users.html', users=users)

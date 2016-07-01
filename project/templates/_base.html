@@ -37,7 +37,7 @@
           {% if session.logged_in %}
           <li><a href="/">Home</a></li>
           <li><a href="/tweets/">Tweets</a></li>
-          <li><a>{{ session.name }}</a></li>
+          <li><a href="{{ url_for('users.all_users') }}"">{{ session.name }}</a></li>
           {% endif %}
           {% if not session.logged_in %}
           {% block signin_form %}{% endblock signin_form %}

@@ -28,7 +28,7 @@ class Tweet(db.Model):
         hours = td.seconds//3600
         minutes = (td.seconds//60)%60
         if days > 0:
-            return str(days) + 'd'
+            return tweet_posted.strftime("%d %B, %Y")
         elif hours > 0:
             return str(hours) + 'h'
         elif minutes > 0:
