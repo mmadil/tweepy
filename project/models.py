@@ -57,6 +57,14 @@ class User(db.Model):
     def __repr__(self):
         return '<User {0}>'.format(self.name)
 
+    @classmethod
+    def is_following(cls, who_id, whom_id):
+        whom_ids = db.session.query(Follower.whom_id).filter_by(who_id=who_id).all()
+        whom_ids = [i[0] for i in whom_ids]
+        if whom_id in whom_ids:
+            return True
+        else:
+            return False
 
 
 class Follower(db.Model):

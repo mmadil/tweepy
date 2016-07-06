@@ -6,7 +6,7 @@ from sqlalchemy.exc import IntegrityError
 
 from .forms import RegisterForm, LoginForm
 from project import db, bcrypt
-from project.models import User
+from project.models import User, Follower
 
 # config
 users_blueprint = Blueprint('users', __name__)
