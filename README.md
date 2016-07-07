@@ -1,5 +1,9 @@
 # tweepy
 
+![Build Status][travis-ci]
+![Coverage Status][coverage]
+
+
 tweepy is a simple twitter clone made on [flask - a python micro framework](flask.pocoo.org).
 
 ### Stack
@@ -60,3 +64,7 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+
+[travis-ci]: https://travis-ci.org/mmadil/tweepy.svg?branch=master
+[coverage]: https://coveralls.io/repos/github/mmadil/tweepy/badge.svg
