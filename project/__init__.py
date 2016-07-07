@@ -29,7 +29,8 @@ def not_found(e):
     return render_template('404.html'), 404
 
 
-@app.errorhandler(500)
+# cannot test this in development
+@app.errorhandler(500) # pragma: no cover
 def internal_error(e):
     db.session.rollback()
     if app.debug is not True:

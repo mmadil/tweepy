@@ -53,22 +53,22 @@ def post_tweet():
     error = None
     form = PostTweetForm()
     if request.method == 'POST':
-        new_tweet = Tweet(
-            form.tweet.data,
-            datetime.datetime.now(),
-            session['user_id']
-        )
-        db.session.add(new_tweet)
-        db.session.commit()
-        flash('New tweet has been posted.')
-        return redirect(url_for('tweets.tweet'))
-    else:
-        return render_template(
-            'tweets.html',
-            form=form,
-            error=error,
-            all_tweets=filtered_tweets(session['user_id']),
-        )
+        if form.validate_on_submit():
+            new_tweet = Tweet(
+                form.tweet.data,
+                datetime.datetime.now(),
+                session['user_id']
+            )
+            db.session.add(new_tweet)
+            db.session.commit()
+            flash('New tweet has been posted.')
+            return redirect(url_for('tweets.tweet'))
+    return render_template(
+        'tweets.html',
+        form=form,
+        error=error,
+        all_tweets=filtered_tweets(session['user_id']),
+    )
 
 @tweets_blueprint.route('/tweets/delete/<int:tweet_id>/')
 @login_required

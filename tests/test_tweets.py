@@ -78,6 +78,17 @@ class MainTest(unittest.TestCase):
         self.assertIn(b'New tweet has been posted.', response.data)
         self.assertIn(b'test tweet', response.data)
 
+    def test_users_cannot_add_tweet_when_error(self):
+        self.create_user('foobar', 'foobar@example.com','barfoo')
+        self.login('foobar', 'barfoo')
+        self.app.get('tweets/', follow_redirects=True)
+        response = self.app.post('tweets/post/', data=dict(
+            tweet='',
+            posted=datetime.now,
+            user_id=1
+        ), follow_redirects=True)
+        self.assertIn(b'This field is required.', response.data)
+
     def test_users_can_delete_tweets(self):
         self.register(
             'foobar', 'foobar@example.com','barfoo', 'barfoo'
