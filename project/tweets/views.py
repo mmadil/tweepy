@@ -28,7 +28,7 @@ def filtered_tweets(user_id):
     who_id = user_id
     whom_ids = db.session.query(Follower.whom_id).filter_by(who_id=who_id)
     user_tweets = db.session.query(Tweet).filter_by(user_id=who_id)
-    if whom_ids:
+    if whom_ids.all():
         follower_tweets = db.session.query(Tweet).filter(Tweet.user_id.in_(whom_ids))
         result = user_tweets.union(follower_tweets)
         return result.order_by(Tweet.posted.desc())
@@ -92,40 +92,48 @@ def delete_tweet(tweet_id):
 @login_required
 def follow_user(user_id):
     whom_id = user_id
-    whom = db.session.query(User).filter_by(id=whom_id).first().name
-    if session['user_id'] != whom_id:
-        new_follow = Follower(
-            session['user_id'],
-            whom_id
-        )
-        try:
-            db.session.add(new_follow)
-            db.session.commit()
-            flash('You are now following {}'.format(whom))
+    try:
+        whom = db.session.query(User).filter_by(id=whom_id).first().name
+        if session['user_id'] != whom_id:
+            new_follow = Follower(
+                session['user_id'],
+                whom_id
+            )
+            try:
+                db.session.add(new_follow)
+                db.session.commit()
+                flash('You are now following {}'.format(whom))
+                return redirect(url_for('tweets.tweet'))
+            except IntegrityError:
+                flash('You are already following {}'.format(whom))
+                return redirect(url_for('tweets.tweet'))
+        else:
+            flash('No use following yourself. You will still see your tweets anyway. :)')
             return redirect(url_for('tweets.tweet'))
-        except IntegrityError:
-            flash('You are already following {}'.format(whom))
-            return redirect(url_for('tweets.tweet'))
-    else:
-        flash('No use unfollowing yourself. You will still see your tweets anyway. :)')
+    except AttributeError:
+        flash('That user does not exist.')
         return redirect(url_for('tweets.tweet'))
 
 @tweets_blueprint.route('/tweets/unfollow/<int:user_id>/')
 @login_required
 def unfollow_user(user_id):
     whom_id = user_id
-    whom = db.session.query(User).filter_by(id=whom_id).first().name
-    if session['user_id'] != whom_id:
-        following = db.session.query(
-            Follower).filter_by(who_id=session['user_id'], whom_id=whom_id)
-        if following.all():
-            following.delete()
-            db.session.commit()
-            flash('You are no more following {}'.format(whom))
-            return redirect(url_for('tweets.tweet'))
+    try:
+        whom = db.session.query(User).filter_by(id=whom_id).first().name
+        if session['user_id'] != whom_id:
+            following = db.session.query(
+                Follower).filter_by(who_id=session['user_id'], whom_id=whom_id)
+            if following.all():
+                following.delete()
+                db.session.commit()
+                flash('You are no more following {}'.format(whom))
+                return redirect(url_for('tweets.tweet'))
+            else:
+                flash('You are not following {} to unfollow.'.format(whom))
+                return redirect(url_for('tweets.tweet'))
         else:
-            flash('You are not following {} to unfollow.'.format(whom))
+            flash('No use unfollowing yourself. You will still see your tweets anyway. :)')
             return redirect(url_for('tweets.tweet'))
-    else:
-        flash('No use unfollowing yourself. You will still see your tweets anyway. :)')
+    except AttributeError:
+        flash('That user does not exist.')
         return redirect(url_for('tweets.tweet'))

@@ -82,4 +82,4 @@ class Follower(db.Model):
         self.whom_id = whom_id
 
     def __repr__(self):
-        return '<User {0} follows {1}'.format(self.who_id, self.whom_id)
+        return '<User {0} follows {1}>'.format(self.who_id, self.whom_id)

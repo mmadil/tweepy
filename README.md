@@ -32,9 +32,10 @@ Process of installation is easy. This project uses pip-tools to effectively keep
 ## Features and Requirements
 - [x] User can register/signin/signout
 - [x] User can post tweets
-- [x] Add simple all users profile page
-- [x] Implement follow user and filter query
-- [ ] Add more tests and refactor
+- [x] Added a simple all users profile management page
+- [x] User can follow users and get their tweets
+- [x] Add more tests
+- [ ] Refactor
 
 ## License
 
