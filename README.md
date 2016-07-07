@@ -67,4 +67,4 @@ SOFTWARE.
 
 
 [travis-ci]: https://travis-ci.org/mmadil/tweepy.svg?branch=master
-[coverage]: https://coveralls.io/repos/github/mmadil/tweepy/badge.svg
+[coverage]: https://coveralls.io/repos/github/mmadil/tweepy/badge.svg?branch=master
