@@ -1,8 +1,7 @@
 # tweepy
 
-![Build Status][travis-ci]
-![Coverage Status][coverage]
-
+[![Build Status](https://travis-ci.org/mmadil/tweepy.svg?branch=master)](https://travis-ci.org/mmadil/tweepy)
+[![Coverage Status](https://coveralls.io/repos/github/mmadil/tweepy/badge.svg?branch=master)](https://coveralls.io/github/mmadil/tweepy?branch=master)
 
 tweepy is a simple twitter clone made on [flask - a python micro framework](flask.pocoo.org).
 
@@ -65,6 +64,3 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-
-[travis-ci]: https://travis-ci.org/mmadil/tweepy.svg?branch=master
-[coverage]: https://coveralls.io/repos/github/mmadil/tweepy/badge.svg?branch=master
