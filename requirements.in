@@ -7,6 +7,7 @@ Flask-WTF==0.11
 # deployment requirements
 pip-tools==1.6.5
 Fabric==1.11.1
+gunicorn==19.6.0
 
 # testing requirements
 nose==1.3.7

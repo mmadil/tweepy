@@ -17,6 +17,7 @@ Flask-SQLAlchemy==2.1
 Flask-WTF==0.11
 Flask==0.11.1             # via flask-bcrypt, flask-sqlalchemy, flask-wtf
 freezegun==0.3.7
+gunicorn==19.6.0
 itsdangerous==0.24        # via flask
 Jinja2==2.8               # via flask
 MarkupSafe==0.23          # via jinja2
