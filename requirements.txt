@@ -14,7 +14,7 @@ click==6.6
     #   pip-tools
 coverage==4.1
     # via -r requirements.in
-ecdsa==0.13
+ecdsa==0.13.3
     # via paramiko
 fabric==1.11.1
     # via -r requirements.in
