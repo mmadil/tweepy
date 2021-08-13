@@ -20,7 +20,7 @@ fabric==1.11.1
     # via -r requirements.in
 first==2.0.1
     # via pip-tools
-flask==0.11.1
+flask==1.0
     # via
     #   -r requirements.in
     #   flask-bcrypt
@@ -62,7 +62,7 @@ six==1.10.0
     #   python-dateutil
 sqlalchemy==1.3.0
     # via flask-sqlalchemy
-werkzeug==0.15.3
+werkzeug==2.0.1
     # via
     #   flask
     #   flask-wtf
