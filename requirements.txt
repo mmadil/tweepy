@@ -62,7 +62,7 @@ six==1.10.0
     #   python-dateutil
 sqlalchemy==1.3.0
     # via flask-sqlalchemy
-werkzeug==0.11.10
+werkzeug==0.15.3
     # via
     #   flask
     #   flask-wtf
