@@ -1,5 +1,5 @@
 # app requirements
-Flask==1.0
+Flask==2.3.2
 Flask-SQLAlchemy==2.1
 Flask-Bcrypt==0.7.1
 Flask-WTF==0.11
